@@ -38,15 +38,6 @@ export default class Checkbox extends Component {
               className={inputClasses}
             />
           </div>
-
-
-          <div class="row press">
-            <input type="checkbox" id="unchecked" class="cbx hidden"/>
-            <label for="unchecked" class="lbl"></label>
-          </div>
-
-
-
     );
   }
 

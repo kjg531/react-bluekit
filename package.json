@@ -15,7 +15,8 @@
     "preversion": "npm run clean && npm run check",
     "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "npm test -- --watch",
-    "version": "npm run build"
+    "version": "npm run build",
+    "postinstall": "npm run build",
   },
 
   "devDependencies": {
