@@ -27,17 +27,7 @@ export default class Checkbox extends Component {
     let inputClasses = cx("cbx", "hidden");
 
     return (
-          <div>
-            <input
-              checked={value}
-              id={name}
-              key='input'
-              name={name}
-              onChange={onChange}
-              type='checkbox'
-              className={inputClasses}
-            />
-          </div>
+      <span></span>
     );
   }
 
