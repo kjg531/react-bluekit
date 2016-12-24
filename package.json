@@ -1,6 +1,6 @@
 {
   "name": "ehi-lib",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Visualisation and Playground generated from Components",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
@@ -16,7 +16,7 @@
     "test": "mocha --compilers js:babel/register --recursive",
     "test:watch": "npm test -- --watch",
     "version": "npm run build",
-    "postinstall": "npm run build",
+    "postinstall": "npm run build"
   },
 
   "devDependencies": {
