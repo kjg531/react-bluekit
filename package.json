@@ -1,6 +1,6 @@
 {
-  "name": "react-bluekit",
-  "version": "0.3.1",
+  "name": "ehi-lib",
+  "version": "0.0.1",
   "description": "Visualisation and Playground generated from Components",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
@@ -17,29 +17,7 @@
     "test:watch": "npm test -- --watch",
     "version": "npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/blueberryapps/react-bluekit.git"
-  },
-  "keywords": [
-    "es6",
-    "es7",
-    "babel",
-    "react-component",
-    "visualization",
-    "playground",
-    "development",
-    "ui-ki",
-    "ui",
-    "design",
-    "node"
-  ],
-  "author": "Ondrej Bartas",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/blueberryapps/react-bluekit/issues"
-  },
-  "homepage": "https://github.com/blueberryapps/react-bluekit#readme",
+
   "devDependencies": {
     "babel-cli": ">=5",
     "babel-core": ">=5",
