@@ -10,6 +10,7 @@ import Sidebar from './Sidebar.react';
 import StateProvider from './StateProvider.react';
 import {FontStyle} from './styles/Font';
 import {breakPoints} from './styles/MediaQueries';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 if (typeof window !== 'undefined') {
   require('brace');
@@ -67,55 +68,57 @@ export default class Page extends Component {
     const allComponentsPreview = selectedAtom === null
 
     return (
-      <StyleRoot>
-        <div style={[styles.wrapper.base, inline ? {height: height} : styles.wrapper.full]}>
-          <MediaQuery maxWidth={breakPoints.large}>
-            <ResponsiveNav
-              allComponentsPreview={allComponentsPreview}
-              componentsIndex={componentsIndex}
+      <MuiThemeProvider>
+        <StyleRoot>
+          <div style={[styles.wrapper.base, inline ? {height: height} : styles.wrapper.full]}>
+            <MediaQuery maxWidth={breakPoints.large}>
+              <ResponsiveNav
+                allComponentsPreview={allComponentsPreview}
+                componentsIndex={componentsIndex}
+                selectAtom={selectAtom}
+                selectedAtom={selectedAtom}
+                toggleSidebar={toggleSidebar}
+              />
+              <div
+                onClick={toggleSidebar}
+                style={[styles.overlay, showMobileSidebar && styles.overlay.active]}
+              />
+            </MediaQuery>
+            <MediaQuery maxWidth={breakPoints.tablet}>
+              {!allComponentsPreview &&
+                <ResponsivePropsNav
+                  showMobileProps={showMobileProps}
+                  toggleMobileProps={toggleMobileProps}
+                />
+              }
+            </MediaQuery>
+            <Sidebar
+              children={children}
+              componentsIndex={filteredComponentsIndex}
+              searchAtoms={searchAtoms}
+              searchedText={searchedText}
               selectAtom={selectAtom}
               selectedAtom={selectedAtom}
+              showMobileSidebar={showMobileSidebar}
               toggleSidebar={toggleSidebar}
             />
-            <div
-              onClick={toggleSidebar}
-              style={[styles.overlay, showMobileSidebar && styles.overlay.active]}
+            <Content
+              componentsIndex={componentsIndex}
+              customProps={customProps}
+              filteredComponentsIndex={filteredComponentsIndex}
+              selectAtom={selectAtom}
+              selectedAtom={selectedAtom}
+              showMobileProps={showMobileProps}
+              simplePropsSelected={simplePropsSelected}
+              sourceBackground={sourceBackground}
+              toggleMobileProps={toggleMobileProps}
+              triggeredProps={triggeredProps}
             />
-          </MediaQuery>
-          <MediaQuery maxWidth={breakPoints.tablet}>
-            {!allComponentsPreview &&
-              <ResponsivePropsNav
-                showMobileProps={showMobileProps}
-                toggleMobileProps={toggleMobileProps}
-              />
-            }
-          </MediaQuery>
-          <Sidebar
-            children={children}
-            componentsIndex={filteredComponentsIndex}
-            searchAtoms={searchAtoms}
-            searchedText={searchedText}
-            selectAtom={selectAtom}
-            selectedAtom={selectedAtom}
-            showMobileSidebar={showMobileSidebar}
-            toggleSidebar={toggleSidebar}
-          />
-          <Content
-            componentsIndex={componentsIndex}
-            customProps={customProps}
-            filteredComponentsIndex={filteredComponentsIndex}
-            selectAtom={selectAtom}
-            selectedAtom={selectedAtom}
-            showMobileProps={showMobileProps}
-            simplePropsSelected={simplePropsSelected}
-            sourceBackground={sourceBackground}
-            toggleMobileProps={toggleMobileProps}
-            triggeredProps={triggeredProps}
-          />
-        </div>
-        <FontStyle />
-        <FontBold />
-      </StyleRoot>
+          </div>
+          <FontStyle />
+          <FontBold />
+        </StyleRoot>
+      </MuiThemeProvider>
     );
   }
 
