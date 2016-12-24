@@ -145,7 +145,7 @@ export default class PropsTable extends Component {
       case 'any': return <Input key={name} type='text' {...defaultProps} />
       case 'array': return <JsonEditor key={name} name={name} {...defaultProps} />
       case 'arrayOf': return <JsonEditor key={name} name={name} {...defaultProps} />
-      case 'bool': return     <Toggle style={styles.toggle} {...{...toggleProps, checked: toggleProps.value, name: key}}/>
+      case 'bool': return     <Toggle style={styles.toggle} trackStyle={toggleStyle.trackOff} trackSwitchedStyle={toggleStyle.trackSwitched} thumbSwitchedStyle={toggleStyle.thumbSwitched} thumbStyle={toggleStyle.thumbOff} {...{...toggleProps, checked: toggleProps.value, name: key}}/>
       // case 'bool': return <input type="checkbox" key={name} {...{...defaultProps, checked: defaultProps.value, name: key}}/>
       case 'element': return <HtmlEditor key={name} name={name} {...defaultProps} />
       case 'enum' : return this.renderEnum(name, type, defaultProps)
@@ -183,16 +183,16 @@ const toggleStyle = {
     marginBottom: 16
   },
   thumbOff: {
-    backgroundColor: '#ffcccc'
+    backgroundColor: '#00aeef'
   },
   trackOff: {
-    backgroundColor: '#ff9d9d'
+    backgroundColor: '#00aeef'
   },
   thumbSwitched: {
-    backgroundColor: 'red'
+    backgroundColor: '#ec008c'
   },
   trackSwitched: {
-    backgroundColor: '#ff9d9d'
+    backgroundColor: '#ec008c'
   },
   labelStyle: {
     color: 'red'
