@@ -10,9 +10,13 @@ import Select from '../atoms/Select.react';
 import spaces from '../styles/Spaces';
 import {Map, fromJS} from 'immutable';
 import * as colors from '../styles/Colors';
-
+import Toggle from 'material-ui/Toggle';
 @Radium
 export default class PropsTable extends Component {
+
+
+
+
 
   static contextTypes = {
     createSetAtomProp: RPT.func.isRequired
@@ -133,12 +137,15 @@ export default class PropsTable extends Component {
       onChange: createSetAtomProp(key, type.name, scope),
       value: fromJS(componentProps).getIn(scope.concat([key]))
     }
-
+    const toggleProps = {
+      onToggle: createSetAtomProp(key, type.name, scope),
+      value: fromJS(componentProps).getIn(scope.concat([key]))
+    }
     switch (type.name) {
       case 'any': return <Input key={name} type='text' {...defaultProps} />
       case 'array': return <JsonEditor key={name} name={name} {...defaultProps} />
       case 'arrayOf': return <JsonEditor key={name} name={name} {...defaultProps} />
-      case 'bool': return <Checkbox key={name} {...{...defaultProps, checked: defaultProps.value, value: defaultProps.value, name: key}} />
+      case 'bool': return     <Toggle label="Simple" style={styles.toggle} {...{...toggleProps, checked: toggleProps.value, name: key}}/>
       // case 'bool': return <input type="checkbox" key={name} {...{...defaultProps, checked: defaultProps.value, name: key}}/>
       case 'element': return <HtmlEditor key={name} name={name} {...defaultProps} />
       case 'enum' : return this.renderEnum(name, type, defaultProps)
@@ -167,6 +174,30 @@ export default class PropsTable extends Component {
     return options
   }
 }
+
+const toggleStyle = {
+  block: {
+    maxWidth: 250
+  },
+  toggle: {
+    marginBottom: 16
+  },
+  thumbOff: {
+    backgroundColor: '#ffcccc'
+  },
+  trackOff: {
+    backgroundColor: '#ff9d9d'
+  },
+  thumbSwitched: {
+    backgroundColor: 'red'
+  },
+  trackSwitched: {
+    backgroundColor: '#ff9d9d'
+  },
+  labelStyle: {
+    color: 'red'
+  }
+};
 
 const styles = {
   clearfix: {
