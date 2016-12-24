@@ -2,9 +2,6 @@ import Component from 'react-pure-render/component';
 import Radium from 'radium';
 import React, {PropTypes as RPT} from 'react';
 import * as colors from '../styles/Colors';
-import style from './checkbox.css';
-import classNames from 'classnames/bind';
-let cx = classNames.bind(style);
 
 
 @Radium
@@ -22,10 +19,6 @@ export default class Checkbox extends Component {
   }
 
   render() {
-    const {name, onChange, value} = this.props;
-    let inputContainerClasses = cx("press");
-    let inputClasses = cx("cbx", "hidden");
-
     return (
       <span></span>
     );
