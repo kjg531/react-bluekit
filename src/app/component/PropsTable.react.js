@@ -138,7 +138,8 @@ export default class PropsTable extends Component {
       case 'any': return <Input key={name} type='text' {...defaultProps} />
       case 'array': return <JsonEditor key={name} name={name} {...defaultProps} />
       case 'arrayOf': return <JsonEditor key={name} name={name} {...defaultProps} />
-      case 'bool': return <Checkbox key={name} {...{...defaultProps, checked: defaultProps.value, name: key}} />
+      case 'bool': return <Checkbox key={name} {...{...defaultProps, checked: defaultProps.value, value: defaultProps.value, name: key}} />
+      // case 'bool': return <input type="checkbox" key={name} {...{...defaultProps, checked: defaultProps.value, name: key}}/>
       case 'element': return <HtmlEditor key={name} name={name} {...defaultProps} />
       case 'enum' : return this.renderEnum(name, type, defaultProps)
       case 'node': return <HtmlEditor key={name} name={name} {...defaultProps} />
